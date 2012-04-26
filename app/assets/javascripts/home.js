@@ -5,7 +5,7 @@ var top = (screen.height / 2) - (2 * height / 3);
 var features = 'menubar=no,toolbar=no,status=no,width=' + width + ',height=' + height + ',toolbar=no,left=' + left + ',top=' + top;
 var loginWindow = window.open('/users/auth/facebook', '_blank', features);
 loginWindow.focus();
-e.preventDefault();
+this.preventDefault();
 return false;
 });
 
