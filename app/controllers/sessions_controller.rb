@@ -12,6 +12,7 @@ class SessionsController < ApplicationController
                      :uid => auth['uid']).first || User.create_with_omniauth(auth)
     session[:user_id] = user.id
     # Also find or create a new network here
+    # Could probably use find_or_create_by_title(cookies[:key])? if @network.wtitle.present?
     network = Network.where(:title => cookies[:key])
     if network.empty?
       @network = Network.create(:title => cookies[:key])

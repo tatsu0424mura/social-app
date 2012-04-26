@@ -3,6 +3,7 @@ class HomeController < ApplicationController
 
   def welcome
     @network = Network.new
+    @networks = Network.all
   end
 
 end

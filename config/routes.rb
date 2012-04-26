@@ -5,6 +5,7 @@ SocialApp::Application.routes.draw do
   root :to => 'home#welcome'
   
   match '/remove/:id' => 'networks#remove'
+  match '/autocomplete' => 'networks#autocomplete'
 
   match '/auth/:provider/callback' => 'sessions#create'
   match '/auth/failure' => 'sessions#failure'

@@ -47,6 +47,11 @@ class NetworksController < ApplicationController
       redirect_to :back, notice:  'There was an error updating the description.'
     end
   end
+  
+  def autocomplete
+    @networks = Network.order(:title).where("title like ?", "%#{params[:term]}")
+    render json: @networks.map(&:name)
+  end
 
   def menu_klass
     if action_name == 'index'
