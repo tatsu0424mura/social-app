@@ -15,4 +15,4 @@
 /tmp
 
 # Ignore provider keys/secret
-config/initializers/omniauth.rb
+# config/initializers/omniauth.rb
