@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>SocialApp</title>
+  <link href='http://fonts.googleapis.com/css?family=Lato:900,400,900italic' rel='stylesheet' type='text/css'>
+  <%= stylesheet_link_tag    "application", :media => "all" %>
+  <%= javascript_include_tag "application" %>
+  <%= csrf_meta_tags %>
+</head>
+<body id="landing">
+  <div id="landing_wrap">
+    <% flash.each do |name, msg| %>
+      <%= content_tag :div, msg, :id => "flash_#{name}" if msg.is_a?(String) %>
+    <% end %>
+    <div id="container">
+      <h1 id="landing_logo"><span class="italic">FB</span>Official</h1>
+      <div id="content" style="padding: 40px 20px;">
+        <h1 id="tagline">Make your relationships official on Facebook.</h1>
+        <div style="padding-bottom: 10px">
+          FBOfficial helps you find contacts from an existing or new network, so you can easily add them on Facebook.
+        </div>
+        <div style="padding: 0 10px 5px">
+          <div class="yellow-box">
+            Enter a network or create a new one below.<br>
+          </div>
+        </div>
+        <%= yield %>
+      </div><!-- //content --> 
+    </div><!-- //container -->
+  </div><!-- //wrap -->
+</body>
+</html>

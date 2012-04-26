@@ -1,11 +1,17 @@
 SocialApp::Application.routes.draw do
 
-  root :to => 'home#index'
+  resources :networks
+
+  root :to => 'home#welcome'
+  
+  match '/remove/:id' => 'networks#remove'
 
   match '/auth/:provider/callback' => 'sessions#create'
   match '/auth/failure' => 'sessions#failure'
   match '/signout' => 'sessions#destroy', :as => :signout
   match '/signin' => 'sessions#new', :as => :signin
+
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

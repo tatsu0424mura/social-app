@@ -1,4 +1,8 @@
 class HomeController < ApplicationController
-  def index
+  layout 'landing'
+
+  def welcome
+    @network = Network.new
   end
+
 end

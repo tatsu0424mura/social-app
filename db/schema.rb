@@ -11,7 +11,21 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120422161059) do
+ActiveRecord::Schema.define(:version => 20120423231821) do
+
+  create_table "networks", :force => true do |t|
+    t.string   "title"
+    t.string   "description", :default => ""
+    t.datetime "created_at",                  :null => false
+    t.datetime "updated_at",                  :null => false
+  end
+
+  create_table "networks_users", :id => false, :force => true do |t|
+    t.integer "network_id"
+    t.integer "user_id"
+  end
+
+  add_index "networks_users", ["network_id", "user_id"], :name => "index_networks_users_on_network_id_and_user_id"
 
   create_table "users", :force => true do |t|
     t.string   "provider"
@@ -20,6 +34,7 @@ ActiveRecord::Schema.define(:version => 20120422161059) do
     t.string   "email"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+    t.string   "image"
   end
 
 end

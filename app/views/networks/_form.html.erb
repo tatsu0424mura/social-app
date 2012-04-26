@@ -1,0 +1,24 @@
+<div class="pad-30-15 blue-bg">
+  <%= form_for @network do |f| %>
+    <% if @network.errors.any? %>
+      <div class="error_messages">
+        <h2 style="padding-bottom: 25px">Sorry, but...the <% @network.errors.full_messages.each do |msg| %>
+            <%= msg.downcase %>! 
+          <% end %>
+          </h2>
+        </ul>
+      </div>
+    <% end %>
+  
+    <%= hidden_field_tag "user_id", current_user.id %>
+    <div class="textbox textbox-big">
+      <%= f.text_field :title, :placeholder => "Enter network name" %>
+    </div>
+    <div class="textbox textbox-big" style="margin-top: 10px; height: 200px">
+      <%= f.text_field :description, :placeholder => "Enter a description for your network" %>
+    </div>
+    <div class="actions">
+      <%= f.submit class: "submit-big" %>
+    </div>
+  <% end %>
+</div>

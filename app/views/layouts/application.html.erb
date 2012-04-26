@@ -2,18 +2,55 @@
 <html>
 <head>
   <title>SocialApp</title>
+  <link href='http://fonts.googleapis.com/css?family=Lato:900,900italic' rel='stylesheet' type='text/css'>
   <%= stylesheet_link_tag    "application", :media => "all" %>
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
 </head>
 <body>
-  <ul class="hmenu">
-    <%= render 'shared/navigation' %>
-  </ul>
-  <% flash.each do |name, msg| %>
-    <%= content_tag :div, msg, :id => "flash_#{name}" if msg.is_a?(String) %>
-  <% end %>
-<%= yield %>
-
+  <div id="wrap">
+    <div id="topbar">
+      <div class="wrap">
+        <ul>
+          <%= render 'shared/navigation' %>
+        </ul>
+      </div> <!-- //wrap -->
+    </div> <!-- //topbar -->
+    <div id="networks_container">
+      <div class="wrap">
+        <div id="header" class="dfx">
+        <a href="/networks"><h1 id="application_logo"><span class="italic">FB</span>Official</h1></a>
+          <!-- put a logo img here with link to home -->
+          <%= render 'shared/menu' %>
+        </div> <!-- //header -->
+        <div id="content-holder" class="dfx">
+          <%= render 'shared/sidebar' %>
+          <div id="networks_content">
+            <%= yield %>
+          </div><!-- //content -->
+        </div><!-- //content-holder -->
+      </div><!-- //wrap -->
+    <div><!-- //container -->
+    <div id="footer">
+      <div class="wrap">
+        <div class="inner dfx">
+          <div class="left">
+            <ul>
+              <li><a href="http://www.twitter.com/ralphwintle">@ralphwintle</a></li>
+            </ul>
+          </div> <!-- //left -->
+          <div class="right"><b>&copy; 2012 SocialApp</b></div>
+        </div> <!-- //inner -->
+      </div> <!-- //wrap -->
+    </div> <!-- //footer -->
+  </div> <!-- //wrap -->
 </body>
 </html>
+        
+        
+  <!-- <% flash.each do |name, msg| %>
+    <%= content_tag :div, msg, :id => "flash_#{name}" if msg.is_a?(String) %>
+  <% end %> -->
+
+
+

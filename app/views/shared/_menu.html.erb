@@ -1,0 +1,6 @@
+<ul id="mainmenu">
+  <% if current_user %>
+    <%= menu_link ("All Networks"), networks_path, :index %>
+    <%= menu_link ("+ Create Network"), new_network_path, :create_network %>
+  <% end %> 
+</ul><!-- //mainmenu -->

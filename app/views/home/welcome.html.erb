@@ -1,0 +1,11 @@
+<%= form_for @network, :url => signin_path, :html => { :class => "welcome_form" } do |f| %>
+<div class="blue-box">
+  <div class="textbox textbox-big">
+    <%= f.text_field :title, :placeholder => "Case sensitive and totally optional..." %>
+  </div>
+</div>
+  <div class="actions" style="margin-top: 20px">
+      <%= f.submit "Sign in with Facebook", id: "facebook", class: "sb circle text thick-border blue popup"  %>
+  </div>
+<% end %>
+

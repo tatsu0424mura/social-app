@@ -1,6 +1,8 @@
 class SessionsController < ApplicationController
 
   def new
+    cookies[:key] = params[:network][:title].to_sym
+    # @network = Network.create(params[:network])
     redirect_to '/auth/facebook' 
   end
 
@@ -9,12 +11,20 @@ class SessionsController < ApplicationController
     user = User.where(:provider => auth['provider'],
                      :uid => auth['uid']).first || User.create_with_omniauth(auth)
     session[:user_id] = user.id
-    redirect_to root_url, :notice => "Signed in!"
+    # Also find or create a new network here
+    network = Network.where(:title => cookies[:key])
+    if network.empty?
+      @network = Network.create(:title => cookies[:key])
+      current_user.networks << @network
+    else
+      current_user.networks << network.first unless current_user.networks.include?(network.first)
+    end
+    cookies[:key] = "" 
+    redirect_to networks_path, :notice => "Signed in!"
   end
 
   def failure
     redirect_to root_url, :alert => "Authentication error: #{params[:message].humanize}"
-    
   end
 
   def destroy
