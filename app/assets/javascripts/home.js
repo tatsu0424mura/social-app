@@ -1,6 +1,3 @@
-// $('#network_title').autocomplete( { source: $('#network_title').data('autocomplete-source') });
-// 
-// // 
 // // window.fbAsyncInit = function() {
 // //      FB.init({
 // //        appId  : '372191216164729',
