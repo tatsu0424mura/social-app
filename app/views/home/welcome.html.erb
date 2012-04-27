@@ -1,7 +1,7 @@
 <%= form_for @network, :url => signin_path, :html => { :id => "welcome_form" } do |f| %>
 <div class="blue-box">
   <div class="textbox textbox-big">
-    <%= f.text_field :title, :placeholder => "Case sensitive and totally optional..." %>
+    <%= f.text_area :title, :placeholder => "Case sensitive and totally optional..." %>
   </div>
 </div>
   <div class="actions" style="margin-top: 20px">
